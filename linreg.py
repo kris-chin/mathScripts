@@ -1,10 +1,11 @@
 '''
+    Author: Krischin Layon
 
     practice_linreg
     
     -linear regression algorithm coded by scratch for demonstration purposes
 
-
+    uses numpy and matplotlib
 
 '''
 
@@ -35,14 +36,15 @@ def generate_xy_data(count,spread):
     return coords
 
 def main():
-
     plot = generate_xy_data(100,25)
     fig = plt.figure()
 
     #the first column of a matrix is refered to as plot[:,0] 
     #the second column of a matrix is refered to as plot[:,1]
-    scatter = plt.scatter(plot[:,0],plot[:,1])
 
+    scatter = plt.scatter(plot[:,0],plot[:,1])
+    #labels#
+    plt.title("Linear Regression Demonstration")
     plt.show()
 
 
