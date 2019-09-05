@@ -3,8 +3,8 @@
 
     practice_linreg
     
-    -linear regression algorithm coded by scratch for demonstration purposes
-    
+    -linear regression algorithms coded by scratch for demonstration purposes
+
     #TODO: implement multiple linear regression (x is a vector)
     #TODO: implement multivariate/general linear regression (x AND y are vectors)
 
@@ -29,7 +29,7 @@ def generate_xy_data(count,spread):
         coords = np.vstack((coords,[i,i+noise])) #vertically stack a new 1x2 row to the coords matrix, effectively adding a new point to the scatterplot
     return coords
 
-def main():
+def Main():
     fig = plt.figure()
     ax = plt.axes()
 
@@ -49,4 +49,4 @@ def main():
     plt.title("Demonstration of Linear Regression From Scratch")
     plt.show()
 
-main()
+Main()

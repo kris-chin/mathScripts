@@ -2,7 +2,7 @@
 
     SimpleLinearRegression.py
 
-    A linear regression class by scratch.
+    A simple linear regression class by scratch.
 
     -scipy's pearson R and numpy's standard deviation for comparision purposes only
 
