@@ -15,6 +15,7 @@
 '''
 import numpy as np
 from matplotlib import pyplot as plt
+from mpl_toolkits import mplot3d #3d compatibility for multiple regression
 
 from SimpleLinearRegression import SimpleLinearRegression #Simple Linear Regression from Scratch
 
@@ -56,7 +57,10 @@ def generate_multiple_reg_data():
 def testMultipleReg():
     #initalize plt
     fig = plt.figure()
-    ax = plt.axes()
+    ax = plt.axes(projection = "3d")
+
+    #we'll just start with 2 explanatory variables. (the plot's x and y)
+    #our response variable will be the plot's z
 
     #show plt
     plt.title("Demonstration of Multiple Regression From Scratch")

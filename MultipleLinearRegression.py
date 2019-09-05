@@ -43,9 +43,16 @@ def MultipleLinearRegression(x,y):
 
     #BETA MATRIX =  (X'X)^-1 X'y 
 
-    beta = np.linalg.inv(x.T * x) * (x.T*y)
+    #----------------------------------------------------
 
+    #convert y into a nx1 numpy matrix (if not already)
+    #TODO: implement this
+
+    #compute the beta matrix
+    beta = np.linalg.inv(x.T * x) * (x.T*y) #TODO: make sure this is proper matrix multiplication
     print(beta)
 
+    #convert beta into a list
+    #TODO: implement this
 
     return beta
