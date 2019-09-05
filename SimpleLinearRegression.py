@@ -3,15 +3,10 @@
     SimpleLinearRegression.py
 
     A simple linear regression class by scratch.
-
-    -scipy's pearson R and numpy's standard deviation for comparision purposes only
+    For use when you have one explanatory variable and one scalar response.
 
 '''
 from math import sqrt
-
-#these are just for comparision purposes only
-from numpy import std
-from scipy.stats import pearsonr
 
 def SimpleLinearRegression(x,y):
     #x is an array-like of x values of the points
@@ -37,13 +32,8 @@ def SimpleLinearRegression(x,y):
     
     r = sum(a*b for a,b in zip(x,y)) / sqrt(sum(i**2 for i in x) * sum(i**2 for i in y)) #pearson r in one line of code.
 
-    #comparing the manual method to traditional module methods.
-    print("manual R: " + str(r) + "\n scipy R: " + str(pearsonr(x,y)[0]))
-    print("manual STD_X: " + str(std_x) + "\n numpy STD_X: " + str(std(x)))
-    print("manual STD_Y: " + str(std_y) + "\n numpy STD_Y: " + str(std(y)))
-
     #compute our respective b and a values for the line
-    b = r*(std_y/std_x)
-    a = y_bar-b*x_bar
+    b = r*(std_y/std_x) #regression coefficient beta1
+    a = y_bar-b*x_bar #regression intercept
 
     return (b,a)

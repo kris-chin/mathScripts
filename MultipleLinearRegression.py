@@ -1,10 +1,10 @@
 '''
 
-    SimpleLinearRegression.py
+    MultipleLinearRegression.py
 
     A multiple linear regression class by scratch.
+    For use when you have multiple explanatory variables and one scalar response
 
-    -scipy's pearson R and numpy's standard deviation for comparision purposes only
 
 '''
 
@@ -19,4 +19,14 @@ def MultipleLinearRegression(x,y):
     #y is an array-like of the dependent variables.
     # -must be the same length as x's height. (number of points)
 
-    print("TODO")
+    #returns a list of regression coefficients from increasing order wtih it's length being (the number of explanatory variables + 1)
+    #the first item is beta0, the regression intercept
+
+    #----------------------------------------------------
+
+    
+
+    betaCoefficients = []
+
+
+    return betaCoefficients
