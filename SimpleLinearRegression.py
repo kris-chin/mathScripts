@@ -30,10 +30,10 @@ def SimpleLinearRegression(x,y):
     std_x = sqrt( sum( (i-x_bar)**2 for i in x ) / N ) #standard deviation of the x values
     std_y = sqrt( sum( (i-y_bar)**2 for i in y ) / N ) #standard devation of the y values
     
-    r = sum(a*b for a,b in zip(x,y)) / sqrt(sum(i**2 for i in x) * sum(i**2 for i in y)) #pearson r in one line of code.
+    r = sum(a*b for a,b in zip(x,y)) / sqrt(sum(i**2 for i in x) * sum(i**2 for i in y)) #pearson's r in one line of code.
 
     #compute our respective b and a values for the line
-    b = r*(std_y/std_x) #regression coefficient beta1
+    b = r*(std_y/std_x) #regression coefficient
     a = y_bar-b*x_bar #regression intercept
 
     return (b,a)
