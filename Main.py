@@ -19,7 +19,7 @@ from matplotlib import pyplot as plt
 from SimpleLinearRegression import SimpleLinearRegression #Simple Linear Regression from Scratch
 
 #generates a Countx2 matrix. the first column is the x value. the second column is the y value. Every row is a point on the scatterplot
-def generate_xy_data(count,spread):
+def generate_simple_xy_data(count,spread):
     #count = how many values to generate
     #spread = the maximum magnitude offset of the y values
     coords = np.zeros((1,2),int) #start with a 1x2 array of 0s
@@ -29,13 +29,14 @@ def generate_xy_data(count,spread):
         coords = np.vstack((coords,[i,i+noise])) #vertically stack a new 1x2 row to the coords matrix, effectively adding a new point to the scatterplot
     return coords
 
-def Main():
+#i just renamed this so i don't have to keep testing simple regression
+def testSimpleReg():
     fig = plt.figure()
     ax = plt.axes()
 
     #the first column of a matrix is refered to as plot[:,0] 
     #the second column of a matrix is refered to as plot[:,1]
-    plot = generate_xy_data(100,25)
+    plot = generate_simple_xy_data(100,25)
     scatter = plt.scatter(plot[:,0],plot[:,1]) #plot the random values
 
     simpleLinReg = SimpleLinearRegression(plot[:,0],plot[:,1])
@@ -49,4 +50,10 @@ def Main():
     plt.title("Demonstration of Linear Regression From Scratch")
     plt.show()
 
-Main()
+def testMultipleReg():
+    fig = plt.figure()
+    ax = plt.axes()
+
+
+
+testMultipleReg()

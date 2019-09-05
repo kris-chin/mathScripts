@@ -45,8 +45,7 @@ def MultipleLinearRegression(x,y):
 
     beta = np.linalg.inv(x.T * x) * (x.T*y)
 
+    print(beta)
 
-    betaCoefficients = []
 
-
-    return betaCoefficients
+    return beta
