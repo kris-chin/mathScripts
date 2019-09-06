@@ -46,13 +46,23 @@ def MultipleLinearRegression(x,y):
     #----------------------------------------------------
 
     #convert y into a nx1 numpy matrix (if not already)
-    #TODO: implement this
-
+    if isinstance(y,np.ndarray) == False:
+        #print("y is not an nx1 numpy matrix. converting...")
+        y = np.asarray([y]).T #convert list to a transposed numpy matrix
+    
     #compute the beta matrix
-    beta = np.linalg.inv(x.T * x) * (x.T*y) #TODO: make sure this is proper matrix multiplication
-    print(beta)
+    tXy = np.dot(x.T,y)
+    #try the inverse of X' * X
+    try:
+        inverseXtX = np.linalg.inv(np.dot(x.T,x))
+        beta = np.dot(inverseXtX, tXy) #compute the beta using the inverse
+        #print("The determininant of X'X is computable")
+        
+    except:
+        print("The determininant of X'X is 0. Solution may not be unique")
+        beta = tXy #if inverse doesn't exist
 
     #convert beta into a list
-    #TODO: implement this
+    beta = [x[0] for x in beta.tolist()]
 
     return beta
