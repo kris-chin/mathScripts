@@ -1,5 +1,5 @@
 '''
-    unit testing for multiple linear regression. tests with real multiple linear regression examples found online
+    unit testing for multiple linear regression. tests with real multiple linear regression examples found online 
 
 '''
 
