@@ -5,7 +5,6 @@
     
     -linear regression algorithms coded by scratch for demonstration purposes
 
-    #TODO: implement multiple linear regression (x is a vector)
     #TODO: implement multivariate/general linear regression (x AND y are vectors)
 
     uses:
@@ -20,6 +19,7 @@ import math
 
 from SimpleLinearRegression import SimpleLinearRegression #Simple Linear Regression from Scratch
 from MultipleLinearRegression import MultipleLinearRegression #Multiple Linear Regression from Scratch
+from MultivariateLinearRegression import MultivariateLinearRegression #Multivariate Linear Regression from Scatch
 
 #generates a Countx2 matrix. the first column is the x value. the second column is the y value. Every row is a point on the scatterplot
 def generate_simple_data(count,spread):
@@ -97,5 +97,15 @@ def testMultipleReg():
     plt.title("Demonstration of Multiple Regression From Scratch")
     plt.show()
 
-testSimpleReg()
-testMultipleReg()
+#--------------------------------------------------------------------------------------------------------------------------------------------------------
+def generate_multivaraite_reg_data():
+    print("todo")
+
+def testMultivariateReg():
+    print("todo")
+
+#--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#testSimpleReg()
+#testMultipleReg()
+testMultivariateReg()
