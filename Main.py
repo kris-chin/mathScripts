@@ -97,4 +97,5 @@ def testMultipleReg():
     plt.title("Demonstration of Multiple Regression From Scratch")
     plt.show()
 
+testSimpleReg()
 testMultipleReg()
