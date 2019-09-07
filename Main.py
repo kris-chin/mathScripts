@@ -88,7 +88,10 @@ def testMultipleReg():
    
     regX = np.linspace(-spreadValue,spreadValue,30) #set up a linspace for the prediction surface
     regY = np.linspace(-spreadValue,spreadValue,30) #set up another linspace for the prediciton surface
-    def z(x,y): return coefficients[0]+coefficients[1]*x+coefficients[2]*y #this is our 2-explanatory variable equation. z = b0 + b1*x1 + b2*x2
+
+    #this is our actual regression requation designed for 2 explanatory variables
+    def z(x,y): return coefficients[0]+coefficients[1]*x+coefficients[2]*y
+
     multiRegX, multiRegY = np.meshgrid(regX,regY)
 
     ax.plot_wireframe(multiRegX, multiRegY, z(multiRegX,multiRegY),color="red") #plot our prediction
@@ -102,7 +105,22 @@ def generate_multivaraite_reg_data():
     print("todo")
 
 def testMultivariateReg():
-    print("todo")
+
+    #i = 5, p = 3, 
+    independentVar1 = [11,103,1005,10007,100009]
+    independentVar2 = [19,28,37,46,55]
+    xMatrix = np.array([[1 for i in independentVar1],independentVar1,independentVar2]).T
+    print("xmatrix:\n" + str(xMatrix))
+
+    dependentVar1 = [21,42,63,84,105]
+    dependentVar2 = [32,64,96,128,1512]
+    yMatrix = np.array([dependentVar1, dependentVar2]).T
+    print("ymatrix:\n" + str(yMatrix))
+    
+    betaMatrix = MultivariateLinearRegression(xMatrix,yMatrix)
+
+    print(betaMatrix)
+    #def reg
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
 
