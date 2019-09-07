@@ -16,6 +16,8 @@ import numpy as np
 def MultivariateLinearRegression(x,y):
     #x = numpy matrix. each row is a point. each column is an independent variable
     #y = numpy matrix. each row is a point. each column is a dependent variable.
+
+    #returns a p by j matrix of regression coefficients. (beta)
     #----------------------------------------------------
 
     #the model is similar to the multiple regression model. except Y and B are now matrices instead of vectors
@@ -34,8 +36,6 @@ def MultivariateLinearRegression(x,y):
     # j = number of dependent variables (y0, y1, ... ,yj)
     
     #this means the entire entire plot can be represented by a rank-3 tensor (i x p x j)
-
-    #returns a p by j matrix of regression coefficients. (beta)
 
     #----------------------------------------------------
 
