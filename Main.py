@@ -119,8 +119,9 @@ def testMultivariateReg():
     
     betaMatrix = MultivariateLinearRegression(xMatrix,yMatrix)
 
-    print(betaMatrix)
-    #def reg
+    print(betaMatrix.astype(float))
+    
+    
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
 

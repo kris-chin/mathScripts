@@ -42,14 +42,15 @@ def MultivariateLinearRegression(x,y):
     #B = X^-1 * Y
     #only works if X is invertible. 
 
+    #we're gonna use the same algorithm used in our multiple linear regressino program
+    tXy = np.dot(x.T,y)
+    #try the inverse of X' * X
     try:
-        invX = np.linalg.inv(x)
+        inverseXtX = np.linalg.inv(np.dot(x.T,x))
+        betaMatrix = np.dot(inverseXtX, tXy) #compute the beta using the inverse
+        
     except:
-        raise Exception('X is not invertible')
-
-    try:
-        betaMatrix = np.dot(invX,y)
-    except:
-        raise Exception('inverse of X can not be multiplied by Y')
+        print("The determininant of X'X is 0. Solution may not be unique")
+        betaMatrix = tXy #if inverse doesn't exist
 
     return betaMatrix
