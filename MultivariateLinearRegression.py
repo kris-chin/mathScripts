@@ -18,6 +18,10 @@ def MultivariateLinearRegression(x,y):
     #y = numpy matrix. each row is a point. each column is a dependent variable.
 
     #returns a p by j matrix of regression coefficients. (beta)
+    # -every term in column 1 is the regression coefficient for the first dependent variable (Y1). every term in column 2 is the regression coefficient for the second dependent variable (y2)
+    # -this would be plotted as y1 = column1_intercept + column1_coef1*x1 + column1_coef2*x2...
+    #                           y2 = column2_intercept + column2_coef1*x1 + column2_coef2*x2...
+
     #----------------------------------------------------
 
     #the model is similar to the multiple regression model. except Y and B are now matrices instead of vectors

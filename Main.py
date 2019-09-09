@@ -117,11 +117,20 @@ def testMultivariateReg():
     yMatrix = np.array([dependentVar1, dependentVar2]).T
     print("ymatrix:\n" + str(yMatrix))
     
-    betaMatrix = MultivariateLinearRegression(xMatrix,yMatrix)
+    betaMatrix = MultivariateLinearRegression(xMatrix,yMatrix).astype(int)
 
-    print(betaMatrix.astype(float))
-    
-    
+    #this is our regression formula
+    def yHat(x):
+        #x is a tuple of 2 independent variables. (as provided in our example of 2 independent variables)
+        #returns a tuple of 2 dependent variables. (as provided by our example of 2 dependent variables)
+        y1 = betaMatrix[0,0] + (x[0]*betaMatrix[1,0]) + (x[1]*betaMatrix[2,0])
+        y2 = betaMatrix[0,1] + (x[0]*betaMatrix[1,1]) + (x[1]*betaMatrix[2,1])
+        return (y1,y2)
+        
+    print("betaMatrix:\n"+ str(betaMatrix))
+
+    fig = plt.figure()
+    ax = plt.axes()
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
 
