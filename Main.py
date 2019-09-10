@@ -5,8 +5,6 @@
     
     -linear regression algorithms coded by scratch for demonstration purposes
 
-    #TODO: implement multivariate/general linear regression (x AND y are vectors)
-
     uses:
         -numpy for matrices only.
         -matplotlib for plotting
@@ -16,6 +14,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from mpl_toolkits import mplot3d #3d compatibility for multiple regression
 import math
+import random
 
 from SimpleLinearRegression import SimpleLinearRegression #Simple Linear Regression from Scratch
 from MultipleLinearRegression import MultipleLinearRegression #Multiple Linear Regression from Scratch
@@ -101,22 +100,31 @@ def testMultipleReg():
     plt.show()
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
-def generate_multivaraite_reg_data():
-    print("todo")
+def generate_multivaraite_reg_data(spread,n):
+    #spread = range of random values
+    #n = number of points to generate
+    #returns just a list.
+
+    return [random.randint(-spread,spread) for i in range(n)]
+
 
 def testMultivariateReg():
 
+    spread = 100
+    count = 250
+
     #i = 5, p = 3, 
-    independentVar1 = [11,103,1005,10007,100009]
-    independentVar2 = [19,28,37,46,55]
+    independentVar1 = generate_multivaraite_reg_data(spread,count)
+    independentVar2 = generate_multivaraite_reg_data(spread,count)
     xMatrix = np.array([[1 for i in independentVar1],independentVar1,independentVar2]).T
     print("xmatrix:\n" + str(xMatrix))
 
-    dependentVar1 = [21,42,63,84,105]
-    dependentVar2 = [32,64,96,128,1512]
+    dependentVar1 = [a+b for a,b in zip(independentVar1,independentVar2)]
+    dependentVar2 = [b-a for a,b in zip(independentVar1,independentVar2)]
     yMatrix = np.array([dependentVar1, dependentVar2]).T
     print("ymatrix:\n" + str(yMatrix))
     
+    maxval = max([max(dependentVar1),max(dependentVar2)])
     betaMatrix = MultivariateLinearRegression(xMatrix,yMatrix).astype(int)
 
     #this is our regression formula
@@ -129,8 +137,52 @@ def testMultivariateReg():
         
     print("betaMatrix:\n"+ str(betaMatrix))
 
+    #compute regression
+    regX1 = [math.sin(i)*(spread/2) for i in np.linspace(-maxval,maxval,count/4)]
+    regX2 = [math.cos(i)*(spread/2) for i in np.linspace(-maxval,maxval,count/4)]
+    
+    regX_matrix = np.array([[1 for i in range(count)],regX1,regX2]).T #set up x
+
+    regY1 = []
+    regY2 = []
+    for a,b in zip(regX1,regX2):
+        Y = yHat((a,b))
+        regY1.append(Y[0])
+        regY2.append(Y[1])
+
+    #we will plot the independent vars and dependant vars on 2 seperate 2D subplots. (i can't think of a proper way to vizualize them)
+
+    #initialize plt
     fig = plt.figure()
-    ax = plt.axes()
+    ax1, ax2 = fig.subplots(2)
+
+    #first plot our pre-defined values
+    colorList = [(a*b) for a,b in zip(independentVar1,independentVar2)] #this maps the color of the x's to the color of the y's.
+
+    ax1.scatter(independentVar1,independentVar2,c=colorList,cmap='hsv',s=10)
+    ax1.set(xlabel="x0",ylabel="x1",aspect='equal',xlim=[-spread,spread],ylim=[-spread,spread])
+    ax1.spines['left'].set_position('center')
+    ax1.spines['bottom'].set_position('center')
+    ax1.spines['right'].set_color('none')
+    ax1.spines['top'].set_color('none')
+
+    ax2.scatter(dependentVar1,dependentVar2,c=colorList,cmap='hsv',s=10)
+    ax2.set(xlabel="y0",ylabel="y1",aspect='equal',xlim=[-maxval,maxval],ylim=[-maxval,maxval])
+    ax2.spines['left'].set_position('center')
+    ax2.spines['bottom'].set_position('center')
+    ax2.spines['right'].set_color('none')
+    ax2.spines['top'].set_color('none')
+
+    #plot the regression predictions
+
+    #coloring for the regression
+    colorList2 = [(a*b) for a,b in zip(regX1,regX2)]
+
+    ax1.scatter(regX1,regX2,c=colorList2,cmap='twilight_shifted')
+    ax2.scatter(regY1,regY2,c=colorList2,cmap='twilight_shifted')
+
+    plt.show()
+
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
 
