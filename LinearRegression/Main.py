@@ -9,6 +9,8 @@
         -numpy for matrices only.
         -matplotlib for plotting
 
+    this main function only includes generator functions and tests
+
 '''
 import numpy as np
 from matplotlib import pyplot as plt
